@@ -38,7 +38,19 @@ while True:
                     fingers.append(0)
 
             total_fingers = sum(fingers)
-            cv2.putText(img, f'Fingers: {total_fingers}', (10, 30),
+            gesture = ""
+            if total_fingers == 1:
+                gesture = "headache"
+            elif total_fingers == 2:
+                gesture = "shortness of breath"
+            elif total_fingers == 3:
+                gesture = "chest pain"
+            elif total_fingers == 4:
+                gesture = "vomiting"
+            elif total_fingers == 5:
+                gesture = "abdominal pain"
+
+            cv2.putText(img, f'Gesture: {gesture}', (10, 30),
                         cv2.FONT_HERSHEY_PLAIN, 2, (255, 0, 255), 2)
 
     cTime = time.time()
